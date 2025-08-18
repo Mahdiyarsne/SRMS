@@ -44,11 +44,17 @@
                                             <div class="row mb-4">
                                                 <label for="example-email-input" class="col-sm-2 col-form-label">Photo</label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="file" >
+                                                    <input id="Image" class="form-control" type="file" >
                                                 </div>
                                             </div>
                                         
-
+                                                <!-- end row --> 
+                                                <div class="row mb-4">
+                                                <label for="example-email-input" class="col-sm-2 col-form-label"></label>
+                                                <div class="col-sm-10">
+                                           <img id="ShowImage" src="{{asset('admin/assets/images/users/avatar-4.jpg')}}" alt="avatar-4" class="rounded avatar-md">                                               </div>
+                                            </div>
+                                           
                                         <!-- end row -->
                                         <button type="button" class="btn btn-primary waves-effect waves-light">Update Profile</button>
                                     </div>
@@ -57,6 +63,20 @@
 </div>
 
 
-
+<script>
+   $(document).ready(function(){
+        $('#Image').on('change', function(e){
+            if (this.files && this.files[0]) { 
+                var file = this.files[0];
+                
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#ShowImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+</script>
 
  @endsection
