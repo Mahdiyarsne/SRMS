@@ -12,7 +12,11 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
+Route::controller(AdminController::class)->group(function () {
+    
+    Route::get('admin/logout',  'AdminLogout')->name('admin.logout');
+    Route::get('admin/profile',  'AdminProfile')->name('admin.profile');
+});
 
 
 Route::middleware('auth')->group(function () {
