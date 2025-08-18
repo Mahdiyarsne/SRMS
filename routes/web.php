@@ -13,7 +13,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::controller(AdminController::class)->group(function () {
-    
+
     Route::get('admin/logout',  'AdminLogout')->name('admin.logout');
     Route::get('admin/profile',  'AdminProfile')->name('admin.profile');
 });
