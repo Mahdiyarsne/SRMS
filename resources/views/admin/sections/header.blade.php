@@ -92,7 +92,7 @@
                                     </a>
                                     <a href="" class="text-reset notification-item">
                                         <div class="d-flex">
-                                            <img src="{{asset('admin/assets/images/users/avatar-3.jpg')}} "
+                                            <img src="{{asset('assets/images/users/avatar-3.jpg')}} "
                                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                             <div class="flex-1">
                                                 <h6 class="mb-1">James Lemire</h6>
@@ -122,7 +122,7 @@
 
                                     <a href="" class="text-reset notification-item">
                                         <div class="d-flex">
-                                            <img src="{{asset('admin/assets/images/users/avatar-4.jpg')}}"
+                                            <img src="{{asset('assets/images/users/avatar-4.jpg')}}"
                                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                             <div class="flex-1">
                                                 <h6 class="mb-1">Salena Layfield</h6>
@@ -147,7 +147,7 @@
                         <div class="dropdown d-inline-block user-dropdown">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="{{asset('admin/assets/images/users/avatar-1.jpg')}}"
+                                <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/avatar-1.jpg')}}"
                                     alt="Header Avatar">
                                 <span class="d-none d-xl-inline-block ms-1">Julia</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
