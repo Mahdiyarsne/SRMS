@@ -26,7 +26,10 @@
                                     <div class="card-body">
 
                                         <h4 class="card-title">ADMIN PROFILE - Update</h4>
-                                        <div class="row mb-3">
+                                        <form action="{{route('admin.profile.update')}}" method="POST" enctype="multipart/form-data">
+                                           @csrf
+
+                                            <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Username</label>
                                             <div class="col-sm-10">
                                                 <input class="form-control" name="name" type="text" value="{{$adminData->name}}">
@@ -44,7 +47,7 @@
                                             <div class="row mb-4">
                                                 <label for="example-email-input" class="col-sm-2 col-form-label">Photo</label>
                                                 <div class="col-sm-10">
-                                                    <input id="Image" class="form-control" type="file" >
+                                                    <input id="Image" class="form-control" name="photo" type="file" >
                                                 </div>
                                             </div>
                                         
@@ -52,11 +55,15 @@
                                                 <div class="row mb-4">
                                                 <label for="example-email-input" class="col-sm-2 col-form-label"></label>
                                                 <div class="col-sm-10">
-                                           <img id="ShowImage" src="{{asset('admin/assets/images/users/avatar-4.jpg')}}" alt="avatar-4" class="rounded avatar-md">                                               </div>
+                                               <img id="ShowImage" src="{{empty($adminData->photo) ? asset('uploads/no_image.png') : asset('uploads/admin_profiles/' .$adminData->photo)}}" alt="avatar-4" class="rounded avatar-md">                              
+                                            </div>
                                             </div>
                                            
                                         <!-- end row -->
-                                        <button type="button" class="btn btn-primary waves-effect waves-light">Update Profile</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Update Profile</button>
+                                    
+                                       
+                                       </form> 
                                     </div>
                                 </div>
 
