@@ -26,7 +26,7 @@
                                     <div class="card-body">
 
                                         <h4 class="card-title">ADMIN Password - Update</h4>
-                                        <form action="{{route('admin.profile.update')}}" method="POST">
+                                        <form action="{{route('admin.password.update')}}" method="POST">
                                            @csrf
 
                                     <div class="row mb-3">
