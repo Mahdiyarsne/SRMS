@@ -20,7 +20,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('admin/logout',  'AdminLogout')->name('admin.logout');
     Route::get('admin/profile',  'AdminProfile')->name('admin.profile');
     Route::post('admin/profile/update', 'AdminProfileUpdate')->name('admin.profile.update');
-Route::get('admin/password/change', 'AdminPasswordChange')->name('admin.password.change');
+    Route::get('admin/password/change', 'AdminPasswordChange')->name('admin.password.change');
     Route::post('admin/password/update', 'AdminPasswordUpdate')->name('admin.password.update');
 });
 
@@ -28,6 +28,7 @@ Route::get('admin/password/change', 'AdminPasswordChange')->name('admin.password
 Route::controller(ClassesController::class)->group(function () {
 
     Route::get('create/class', 'CreateClass')->name('create.class');
+    Route::post('store/class', 'StoreClass')->name('store.class');
 });
 
 
