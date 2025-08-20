@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\ClassesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,13 +13,21 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+//Admin's All Routes
 Route::controller(AdminController::class)->group(function () {
 
     Route::get('admin/logout',  'AdminLogout')->name('admin.logout');
     Route::get('admin/profile',  'AdminProfile')->name('admin.profile');
     Route::post('admin/profile/update', 'AdminProfileUpdate')->name('admin.profile.update');
-    Route::get('admin/password/change', 'AdminPasswordChange')->name('admin.password.change');
+Route::get('admin/password/change', 'AdminPasswordChange')->name('admin.password.change');
     Route::post('admin/password/update', 'AdminPasswordUpdate')->name('admin.password.update');
+});
+
+//Classes's All Routes
+Route::controller(ClassesController::class)->group(function () {
+
+    Route::get('create/class', 'CreateClass')->name('create.class');
 });
 
 
