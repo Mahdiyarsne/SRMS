@@ -28,5 +28,13 @@ class ClassesController extends Controller
         );
 
         return redirect()->back()->with($notification);
-    }
+    } //End method
+
+    public function ManageClasses()
+    {
+
+        $classes = classes::all();
+
+        return view('backend.class.manage_classes_view', with($classes));
+    } //End method
 }

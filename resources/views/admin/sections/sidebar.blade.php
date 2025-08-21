@@ -39,6 +39,8 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{route('create.class')}}">Create Class</a></li>
+                                    <li><a href="{{route('manage.classes')}}">Manage Classes</a></li>
+                                
                                 </ul>
                             </li>
 
