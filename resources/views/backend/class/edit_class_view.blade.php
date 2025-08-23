@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Edit Student Classes</h4>
+                                    <h4 class="mb-sm-0">Edit Student Class</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
@@ -25,14 +25,14 @@
                         <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="card-title">Edit Student Classes</h4>
-                                        <form action="{{route('store.class')}}" method="POST">
+                                        <h4 class="card-title">Edit Student Class</h4>
+                                        <form action="{{route('update.class')}}" method="POST">
                                            @csrf
-
+                                       <input type="hidden" name="id" value="{{$class->id}}">
                                     <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Class Name</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" name="class_name" required type="text" placeholder="Class Name">
+                                                <input class="form-control" name="class_name"  type="text" value="{{$class->class_name}}">
                                                 <p style="font-style: italic; margin-top:10px">Eg - First , Second, Thrid etc</p>
                                             </div>
                                         </div>
@@ -41,14 +41,14 @@
                                     <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Section</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" name="section" required type="text" placeholder="Section">
+                                                <input class="form-control" name="section"  type="text" value="{{$class->section}}">
                                                 <p style="font-style: italic; margin-top:10px">Eg - A , B, C etc</p>
                                             </div>
                                         </div>
                                     
                                               
                                         <!-- end row -->
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Create Class</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Update Class</button>
                                     
                                        
                                        </form> 

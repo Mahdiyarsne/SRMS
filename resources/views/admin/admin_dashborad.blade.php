@@ -29,7 +29,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         {{-- Toaster Link --}}
          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-       
+       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         </head>
 
     <body data-topbar="dark">
@@ -96,7 +96,7 @@
                         <img src="{{asset('assets/images/layouts/layout-2.jpg')}}" class="img-fluid img-thumbnail" alt="layout-2">
                     </div>
                     <div class="form-check form-switch mb-3">
-                        <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="{{asset('backend/assets/css/bootstrap-dark.min.css')}}" data-appStyle="{{asset('backend/assets/css/app-dark.min.css')}}">
+                        <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="{{asset('assets/css/bootstrap-dark.min.css')}}" data-appStyle="{{asset('assets/css/app-dark.min.css')}}">
                         <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
                     </div>
     
@@ -169,6 +169,7 @@
     break; 
  }
  @endif 
+
 </script>
 
 
@@ -177,8 +178,38 @@
         <script src="{{asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
           <!-- Datatable init js -->
         <script src="{{asset('assets/js/pages/datatables.init.js')}}"></script>
+       <script src="{{ asset('assets/js/code.js') }}"></script>
     
-    
+
+       <script>
+        
+ $(function(){
+    $(document).on('click','#delete',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+
+                  Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Delete This Data?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      window.location.href = link
+                      Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                      )
+                    }
+                  }) 
+
+    });
+  });
+       </script>
     </body>
 
 </html>
