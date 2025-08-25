@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ClassesController;
+use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('admin/password/update', 'AdminPasswordUpdate')->name('admin.password.update');
 });
 
-//Classes's All Routes
+//Classes All Routes
 Route::controller(ClassesController::class)->group(function () {
 
     Route::get('create/class', 'CreateClass')->name('create.class');
@@ -35,6 +36,11 @@ Route::controller(ClassesController::class)->group(function () {
     Route::get('delete/class/{id}', 'DeleteClass')->name('delete.class');
 });
 
+//Subjects All Routes
+
+Route::controller(SubjectController::class)->group(function () {
+    Route::get('create/subject', 'CreateSubject')->name('create.subject');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

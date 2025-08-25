@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class classes extends Model
+
+class Subject extends Model
 {
     use HasFactory;
-
     //
     protected $guarded = [];
 }
