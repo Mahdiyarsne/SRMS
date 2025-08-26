@@ -26,14 +26,13 @@
                                     <div class="card-body">
 
                                         <h4 class="card-title">Create Subject</h4>
-                                        <form action="{{route('store.class')}}" method="POST">
+                                        <form action="{{route('store.subject')}}" method="POST">
                                            @csrf
 
                                     <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Subject Name</label>
                                             <div class="col-sm-10">
                                                 <input class="form-control" name="subject_name" required type="text" placeholder="Subject Name">
-                                                <p style="font-style: italic; margin-top:10px">Eg - First , Second, Thrid etc</p>
                                             </div>
                                         </div>
 
@@ -41,8 +40,7 @@
                                     <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Subjcet Code</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" name="subjcet_code" required type="text" placeholder="Subjcet Code">
-                                                <p style="font-style: italic; margin-top:10px">Eg - A , B, C etc</p>
+                                                <input class="form-control" name="subject_code" required type="text" placeholder="Subjcet Code">
                                             </div>
                                         </div>
                                     

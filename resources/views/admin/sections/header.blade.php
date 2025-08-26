@@ -4,7 +4,7 @@
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo">
-                                <span style="color: #fff;font-weight:bold;font-size:25px;">
+                                <span style="color: #fff;font-weight:bold;font-size:22px;">
                                   SRMS
                                 </span>
                             </a>
