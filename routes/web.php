@@ -42,6 +42,9 @@ Route::controller(SubjectController::class)->group(function () {
     Route::get('create/subject', 'CreateSubject')->name('create.subject');
     Route::post('sotre/subject', 'StoreSubject')->name('store.subject');
     Route::get('manage/subjects', 'ManageSubjects')->name('manage.subjects');
+    Route::get('edit/subject/{id}', 'EditSubject')->name('edit.subject');
+    Route::post('update/subject', 'UpdateSubject')->name('update.subject');
+    Route::get('delete/subject/{id}', 'DeleteSubject')->name('delete.subject');
 });
 
 Route::middleware('auth')->group(function () {

@@ -27,12 +27,51 @@ class SubjectController extends Controller
             'alert-type' => 'info'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('manage.subjects')->with($notification);
     }
 
     public function ManageSubjects()
     {
         $subjects = Subject::all();
         return view('backend.subject.manage_subject_view', compact('subjects'));
+    }
+
+    public function EditSubject($id)
+    {
+        $subject = Subject::find($id);
+
+        return view('backend.subject.edit_subject_view', compact('subject'));
+    }
+
+    public function UpdateSubject(Request $request)
+    {
+
+        $id = $request->id;
+
+        Subject::where('id', $id)->update([
+            'subject_name' => $request->subject_name,
+            'subject_code' => $request->subject_code,
+
+        ]);
+
+        $notification = array(
+            'message' => 'Subject Updated Successfully!',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('manage.subjects')->with($notification);
+    }
+
+    public function DeleteSubject($id)
+    {
+        Subject::find($id)->delete();
+
+        $notification = array(
+
+            'message' => 'Subject Deleted successfully!',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('manage.subjects')->with($notification);
     }
 }
