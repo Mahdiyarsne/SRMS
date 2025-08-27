@@ -66,7 +66,7 @@
             </div>
 
                                         <!-- end row -->
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Create Subject</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Assign</button>
                                     
                                        
                                        </form> 
