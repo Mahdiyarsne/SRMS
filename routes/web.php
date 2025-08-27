@@ -47,7 +47,7 @@ Route::controller(SubjectController::class)->group(function () {
     Route::get('delete/subject/{id}', 'DeleteSubject')->name('delete.subject');
 
     //Subject Combination All Routes
-
+    Route::get('add/subject/combination', 'AddSubjectCombination')->name('add.subject.combination');
 });
 
 Route::middleware('auth')->group(function () {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\classes;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -74,4 +75,13 @@ class SubjectController extends Controller
 
         return redirect()->route('manage.subjects')->with($notification);
     } //End method
+
+
+    //Subject Combination
+    public function AddSubjectCombination()
+    {
+        $classes = classes::all();
+        $subjects = Subject::all();
+        return view('backend.subject.add_subject_combination_view', compact('classes', 'subjects'));
+    }
 }
