@@ -73,5 +73,5 @@ class ClassesController extends Controller
         );
 
         return redirect()->back()->with($notification);
-    }
+    } //End method
 }

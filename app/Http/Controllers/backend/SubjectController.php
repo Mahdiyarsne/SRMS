@@ -13,7 +13,7 @@ class SubjectController extends Controller
     public function CreateSubject()
     {
         return view('backend.subject.create_subject_view');
-    }
+    } //End method
 
     public function StoreSubject(Request $request)
     {
@@ -28,20 +28,20 @@ class SubjectController extends Controller
         );
 
         return redirect()->route('manage.subjects')->with($notification);
-    }
+    } //End method
 
     public function ManageSubjects()
     {
         $subjects = Subject::all();
         return view('backend.subject.manage_subject_view', compact('subjects'));
-    }
+    } //End method
 
     public function EditSubject($id)
     {
         $subject = Subject::find($id);
 
         return view('backend.subject.edit_subject_view', compact('subject'));
-    }
+    } //End method
 
     public function UpdateSubject(Request $request)
     {
@@ -60,7 +60,7 @@ class SubjectController extends Controller
         );
 
         return redirect()->route('manage.subjects')->with($notification);
-    }
+    } //End method
 
     public function DeleteSubject($id)
     {
@@ -73,5 +73,5 @@ class SubjectController extends Controller
         );
 
         return redirect()->route('manage.subjects')->with($notification);
-    }
+    } //End method
 }
