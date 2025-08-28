@@ -84,4 +84,20 @@ class SubjectController extends Controller
         $subjects = Subject::all();
         return view('backend.subject.add_subject_combination_view', compact('classes', 'subjects'));
     }
+
+    public function StoreSubjectCombnation(Request $request)
+    {
+        $class = classes::find($request->class_id);
+        $subjects = $request->subject_ids;
+        $class->subjects()->attach($subjects);
+
+
+        $notification = array(
+
+            'message' => 'Combination Done successfully!',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }
