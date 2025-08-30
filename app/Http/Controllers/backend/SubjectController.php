@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\classes;
 use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class SubjectController extends Controller
 {
@@ -99,5 +100,47 @@ class SubjectController extends Controller
         );
 
         return redirect()->back()->with($notification);
-    }
+    } //End method
+
+    public function ManageSubjectCombination()
+    {
+        $results = DB::table('classes_subject')
+            ->join('classes', 'classes_subject.classes_id', 'classes.id')
+            ->join('subjects', 'classes_subject.subject_id', 'subjects.id')
+            ->select(
+                'classes_subject.*',
+                'classes.class_name',
+                'classes.section',
+                'subjects.subject_name'
+
+            )->get();
+
+        return view('backend.subject.manage_subject_combination', compact('results'));
+    } //End method
+
+    public function DeactiveSubjectCombination($id)
+    {
+        $status = DB::table('classes_subject')->select('status')->where('id', $id)->first();
+        if ($status->status == 1) {
+            DB::table('classes_subject')->where('id', $id)->update(['status' => 0]);
+
+            $notification = array(
+
+                'message' => 'Subject De-activated successfully!',
+                'alert-type' => 'info'
+            );
+
+            return redirect()->back()->with($notification);
+        } elseif ($status->status == 0) {
+            DB::table('classes_subject')->where('id', $id)->update(['status' => 1]);
+
+            $notification = array(
+
+                'message' => 'Subject Activated successfully!',
+                'alert-type' => 'info'
+            );
+
+            return redirect()->back()->with($notification);
+        }
+    } //End method
 }
