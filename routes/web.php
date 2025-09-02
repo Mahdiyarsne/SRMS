@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ClassesController;
+use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,15 @@ Route::controller(SubjectController::class)->group(function () {
     Route::get('manage/subject/combination', 'ManageSubjectCombination')->name('manage.subject.combination');
     Route::get('deactive/subject/combination/{id}', 'DeactiveSubjectCombination')->name('deactivate.subject.combination');
 });
+
+
+//Students All Routes
+Route::controller(StudentController::class)->group(function () {
+
+    Route::get('add/student', 'AddStudent')->name('add.student');
+    Route::post('store/student', 'StoreStudent')->name('store.student');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
