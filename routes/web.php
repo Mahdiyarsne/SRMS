@@ -62,6 +62,8 @@ Route::controller(StudentController::class)->group(function () {
     Route::post('store/student', 'StoreStudent')->name('store.student');
     Route::get('manage/students', 'ManageStudents')->name('manage.students');
     Route::get('edit/student/{id}', 'EditStudent')->name('edit.student');
+    Route::post('update/student' , 'UpdateStudent')->name('update.student');
+    Route::get('delete/student/{id}','DeleteStudent')->name('delete.student');
 });
 
 

@@ -26,9 +26,9 @@
                                     <div class="card-body">
 
                                         <h4 class="card-title">Fill Student Info</h4>
-                                        <form action="{{route('store.student')}}" method="POST" enctype="multipart/form-data">
+                                        <form action="{{route('update.student')}}" method="POST" enctype="multipart/form-data">
                                            @csrf
-
+                                       <input type="hidden" name="id" value="{{$student->id}}">
                                     <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Full Name</label>
                                             <div class="col-sm-10">
@@ -98,7 +98,7 @@
                                       <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Photo</label>
                                             <div class="col-sm-10">
-                                            <input class="form-control" name="photo" required type="file" id="Image">
+                                            <input class="form-control" name="photo" type="file" id="Image">
                                             </div>
                                         </div>
 
