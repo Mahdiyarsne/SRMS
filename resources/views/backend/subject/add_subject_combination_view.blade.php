@@ -33,7 +33,7 @@
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Classes</label>
                                             <div class="col-sm-10">
                                                 <select name="class_id" class="form-select" aria-label="Default select example">
-                                                    <option selected="">-- Select Class --</option>
+                                                    <option  selected="">-- Select Class --</option>
                                                     
                                                     @foreach ($classes as $class)
                                                         <option value="{{$class->id}}">{{$class->class_name}}</option>   
