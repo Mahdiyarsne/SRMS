@@ -72,7 +72,7 @@ Route::controller(StudentController::class)->group(function () {
 Route::controller(ResultController::class)->group(function () {
 
     Route::get('add/result', 'AddResult')->name('add.result');
-
+    Route::post('store/result' , 'StoreResult')->name('store.result');
 
     //ajax routes all
     Route::get('fetch/student', 'FetchStudent')->name('fetch.student');

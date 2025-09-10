@@ -26,13 +26,13 @@
                                     <div class="card-body">
 
                                         <h4 class="card-title">Declare Student Result</h4>
-                                        <form action="{{route('store.subject')}}" method="POST">
+                                        <form action="{{route('store.result')}}" method="POST">
                                            @csrf
 
                                     <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Class</label>
                                             <div class="col-sm-10">
-                                                 <select name="class_id" class="form-select dynamic" data-dependant="student">
+                                                 <select name="student_id" class="form-select dynamic" data-dependant="student">
                                                     <option selected="">-- Select a Class --</option>
                                                     
                                                     @foreach ($classes as $class)
@@ -112,13 +112,13 @@
 
     $('#student').change(function(){
         let student_id = $(this).val();
-        
-        $ajax({
+        let _token = "{{csrf_token()}}";
+        $.ajax({
             url:"{{route('check.student.result')}}",
             method:"GET",
             dataType:"json",
-            data:{student_id:student_id,_token:"{{csrf_token()}}"},
-            success:function(result){
+            data:{student_id:student_id,_token:_token},
+            success : function(result){
              $('#alert').html(result);
             }
         });

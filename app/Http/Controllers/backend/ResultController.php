@@ -16,7 +16,7 @@ class ResultController extends Controller
         $classes = classes::all();
 
         return view('backend.result.add_result_view', compact('classes'));
-    } //End method 
+    } //End method
 
     public function FetchStudent(Request $request)
     {
@@ -34,7 +34,7 @@ class ResultController extends Controller
         for ($i = 0; $i < count($class_subjects); $i++) {
             $subject_data[$i] = '<label for="english">' . $class_subjects[$i]->subject_name . '</label>
 
-           <input class="form-control" name="subject_ids[]" type="hidden" value="' . $class_subjects[$i]->id . '"> 
+           <input class="form-control" name="subject_ids[]" type="hidden" value="' . $class_subjects[$i]->id . '">
         <input class="form-control" name="marks[]" required type="text" placeholder="Entermark out of 100">';
         }
 
@@ -49,19 +49,38 @@ class ResultController extends Controller
        $message='';
 
        if($result){
-        $message .= '
-
-            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        $message .= '<div class="alert alert-primary alert-dismissible fade show" role="alert">
                                                 <i class="mdi mdi-bullseye-arrow me-2"></i>
                                                  This Student\'s Result is Already Declared!
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                            </div>
-
-        ';
+                                            </div>';
        }
 
 
        return response()->json($message);
-     
+
     }//End Method
+
+    public function StoreResult(Request $request){
+      $sub_count = count($request->subject_ids);
+
+      for($i=0;$i<$sub_count;$i++){
+        $result = [
+       'student_id' => $request->student_id,
+        'class_id' => $request->class_id,
+        'subject_id'=>$request->subject_ids[$i],
+        'marks' => $request->marks[$i],
+
+        ];
+
+        Result::create($result);
+      }
+
+      $notification = array(
+     'message' => 'Results Declared SuccessFully!',
+      'alert-type' => 'success'
+      );
+
+      return redirect()->back()->with($notification);
+    }
 }
