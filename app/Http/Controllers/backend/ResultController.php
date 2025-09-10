@@ -6,6 +6,7 @@ use App\Models\classes;
 
 use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\Models\Result;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
@@ -38,5 +39,29 @@ class ResultController extends Controller
         }
 
         return response()->json(['students' => $std_data, 'subjects' => $subject_data]);
-    }
+    }//End Method
+
+
+    public function FetchStudentResult(Request $request){
+
+       $student_id = $request->student_id;
+       $result = Result::where('student_id',$student_id)->first();
+       $message='';
+
+       if($result){
+        $message .= '
+
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                                <i class="mdi mdi-bullseye-arrow me-2"></i>
+                                                 This Student\'s Result is Already Declared!
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+
+        ';
+       }
+
+
+       return response()->json($message);
+     
+    }//End Method
 }
