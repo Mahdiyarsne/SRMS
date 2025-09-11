@@ -28,6 +28,8 @@ class ResultController extends Controller
             $std_data .= '<option value="' . $student->id . '">' . $student->name . ' | ' . $student->roll_id . '</option>';
         }
 
+
+        $subject_data = [];
         $class = classes::with('subjects')->where('id', $class_id)->first();
         $class_subjects = $class->subjects;
 
@@ -39,48 +41,57 @@ class ResultController extends Controller
         }
 
         return response()->json(['students' => $std_data, 'subjects' => $subject_data]);
-    }//End Method
+    } //End Method
 
 
-    public function FetchStudentResult(Request $request){
+    public function FetchStudentResult(Request $request)
+    {
 
-       $student_id = $request->student_id;
-       $result = Result::where('student_id',$student_id)->first();
-       $message='';
+        $student_id = $request->student_id;
+        $result = Result::where('student_id', $student_id)->first();
+        $message = '';
 
-       if($result){
-        $message .= '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+        if ($result) {
+            $message .= '<div class="alert alert-primary alert-dismissible fade show" role="alert">
                                                 <i class="mdi mdi-bullseye-arrow me-2"></i>
                                                  This Student\'s Result is Already Declared!
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                             </div>';
-       }
+        }
 
 
-       return response()->json($message);
+        return response()->json($message);
+    } //End Method
 
-    }//End Method
+    public function StoreResult(Request $request)
+    {
+        $sub_count = count((array)$request->subject_ids);
 
-    public function StoreResult(Request $request){
-      $sub_count = count($request->subject_ids);
+        for ($i = 0; $i < $sub_count; $i++) {
+            $result = [
+                'student_id' => $request->student_id,
+                'class_id' => $request->class_id,
+                'subject_id' => $request->subject_ids[$i],
+                'marks' => $request->marks[$i],
 
-      for($i=0;$i<$sub_count;$i++){
-        $result = [
-       'student_id' => $request->student_id,
-        'class_id' => $request->class_id,
-        'subject_id'=>$request->subject_ids[$i],
-        'marks' => $request->marks[$i],
+            ];
 
-        ];
+            Result::create($result);
+        }
 
-        Result::create($result);
-      }
+        $notification = array(
+            'message' => 'Results Declared SuccessFully!',
+            'alert-type' => 'success'
+        );
 
-      $notification = array(
-     'message' => 'Results Declared SuccessFully!',
-      'alert-type' => 'success'
-      );
+        return redirect()->back()->with($notification);
+    } //End method
 
-      return redirect()->back()->with($notification);
+
+    public function ManageResults()
+    {
+        $results = Result::groupBy('student_id', 'id')->get();
+
+        return view('backend.result.manage_result', compact('results'));
     }
 }

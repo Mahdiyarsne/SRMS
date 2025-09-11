@@ -72,13 +72,14 @@ Route::controller(StudentController::class)->group(function () {
 Route::controller(ResultController::class)->group(function () {
 
     Route::get('add/result', 'AddResult')->name('add.result');
-    Route::post('store/result' , 'StoreResult')->name('store.result');
+    Route::post('store/result', 'StoreResult')->name('store.result');
+    Route::get('manage/results', 'ManageResults')->name('manage.results');
+
+
 
     //ajax routes all
     Route::get('fetch/student', 'FetchStudent')->name('fetch.student');
     Route::get('fetch/student/result', 'FetchStudentResult')->name('check.student.result');
-
-
 });
 
 
